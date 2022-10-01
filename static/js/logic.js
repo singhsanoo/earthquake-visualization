@@ -18,10 +18,21 @@ let url =
 
 d3.json(url).then(function (response) {
   for (let i = 0; i < response.features.length; i++) {
-    let location = response.features[i].geometry;
+    let location = response.features[i];
+    let magnitude = response.features[i].properties.mag;
+
+    console.log(magnitude);
 
     if (location) {
-      L.marker([location.coordinates[1], location.coordinates[0]]).addTo(myMap);
+      L.circle(
+        [location.geometry.coordinates[1], location.geometry.coordinates[0]],
+        {
+          radius: magnitude * 15000,
+          fillColor: getColor(location.geometry.coordinates[2]),
+          color: "black",
+          fillOpacity: 0.8,
+        }
+      ).addTo(myMap);
     }
   }
 });
@@ -36,15 +47,15 @@ function getColor(d) {
     : d > 30
     ? "#FEB24C"
     : d > 10
-    ? "#FED976"
-    : "#FFEDA0";
+    ? "#FFE92B"
+    : "#8EFF2B";
 }
 
 let legend = L.control({ position: "bottomright" });
 
 legend.onAdd = function () {
-  let div = L.DomUtil.create("div", "info legend"),
-    depth = [-10, 10, 30, 50, 70, 90];
+  let div = L.DomUtil.create("div", "info legend");
+  let depth = [-10, 10, 30, 50, 70, 90];
 
   // loop through our density intervals and generate a label with a colored square for each interval
   for (let i = 0; i < depth.length; i++) {
