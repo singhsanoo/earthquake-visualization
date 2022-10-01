@@ -1,5 +1,5 @@
 let myMap = L.map("map", {
-  center: [37.7749, -100.4194],
+  center: [37.7749, -110.4194],
   zoom: 5,
 });
 
@@ -25,3 +25,38 @@ d3.json(url).then(function (response) {
     }
   }
 });
+
+function getColor(d) {
+  return d > 90
+    ? "#E31A1C"
+    : d > 70
+    ? "#FC4E2A"
+    : d > 50
+    ? "#FD8D3C"
+    : d > 30
+    ? "#FEB24C"
+    : d > 10
+    ? "#FED976"
+    : "#FFEDA0";
+}
+
+let legend = L.control({ position: "bottomright" });
+
+legend.onAdd = function () {
+  let div = L.DomUtil.create("div", "info legend"),
+    depth = [-10, 10, 30, 50, 70, 90];
+
+  // loop through our density intervals and generate a label with a colored square for each interval
+  for (let i = 0; i < depth.length; i++) {
+    div.innerHTML +=
+      '<i style="background:' +
+      getColor(depth[i] + 1) +
+      '"></i> ' +
+      depth[i] +
+      (depth[i + 1] ? "&ndash;" + depth[i + 1] + "<br>" : "+");
+  }
+
+  return div;
+};
+
+legend.addTo(myMap);
