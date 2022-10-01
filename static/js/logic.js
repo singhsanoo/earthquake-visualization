@@ -20,6 +20,8 @@ d3.json(url).then(function (response) {
   for (let i = 0; i < response.features.length; i++) {
     let location = response.features[i];
     let magnitude = response.features[i].properties.mag;
+    let place = response.features[i].properties.place;
+    let depth = location.geometry.coordinates[2];
 
     console.log(magnitude);
 
@@ -28,11 +30,15 @@ d3.json(url).then(function (response) {
         [location.geometry.coordinates[1], location.geometry.coordinates[0]],
         {
           radius: magnitude * 15000,
-          fillColor: getColor(location.geometry.coordinates[2]),
+          fillColor: getColor(depth),
           color: "black",
           fillOpacity: 0.8,
         }
-      ).addTo(myMap);
+      )
+        .addTo(myMap)
+        .bindPopup(
+          `<b>Location:</b> ${place} <hr> <b>Magnitude:</b> ${magnitude} <br> <b>Depth:</b> ${depth}`
+        );
     }
   }
 });

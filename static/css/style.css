@@ -31,3 +31,7 @@ html {
 .leaflet-interactive {
   stroke-width: 1 !important;
 }
+
+.leaflet-popup-content {
+  font-size: medium;
+}
