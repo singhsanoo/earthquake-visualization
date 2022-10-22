@@ -21,8 +21,6 @@ The instructions for this activity are broken into two parts:
 * Part 2: Tectonic Plates Data Plot
    * The second plot illustrate the relationship between tectonic plates and seismic activity. Data on tectonic plates can be found [here](https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json).
 
-![MultilayerMap](Images/MultilayerMap.png)
-
 ### Part 1: Earthquake Visualization
 
 ![BasicMap](Images/BasicMap.png)
@@ -40,6 +38,7 @@ The instructions for this activity are broken into two parts:
 - - -
 
 ### Part 2: Tectonic Plates Data Plot
+![MultilayerMap](Images/MultilayerMap.png)
 
 * Tectonic plates dataset layer is added on the map in addition to the earthquakes.
 
