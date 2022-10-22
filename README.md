@@ -18,7 +18,7 @@ The instructions for this activity are broken into two parts:
 * Part 1: Earthquake Visualization 
    * The USGS dataset used for visualization. [USGS GeoJSON Feed](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson).
 
-* Part 2: Tectonic Plates Data Plot
+* Part 2: Tectonic Plates Layer
    * The second plot illustrate the relationship between tectonic plates and seismic activity. Data on tectonic plates can be found [here](https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json).
 
 ### Part 1: Earthquake Visualization
@@ -37,7 +37,7 @@ The instructions for this activity are broken into two parts:
 
 - - -
 
-### Part 2: Tectonic Plates Data Plot
+### Part 2: Tectonic Plates Layer
 ![MultilayerMap](Images/MultilayerMap.png)
 
 * Tectonic plates dataset layer is added on the map in addition to the earthquakes.
